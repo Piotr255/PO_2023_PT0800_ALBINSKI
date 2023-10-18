@@ -1,9 +1,19 @@
 plugins {
+    id 'application'
     id 'java'
 }
 
+
+
 group = 'org.example'
 version = '1.0-SNAPSHOT'
+
+
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(17))
+    }
+}
 
 repositories {
     mavenCentral()
@@ -16,4 +26,9 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+
+application {
+    getMainClass().set('agh.ics.oop.World')
 }
