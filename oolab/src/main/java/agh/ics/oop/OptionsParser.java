@@ -5,7 +5,7 @@ import agh.ics.oop.model.MoveDirection;
 import java.util.Arrays;
 
 public class OptionsParser{
-    public static MoveDirection[] converse(String[] tab){
+    public static MoveDirection[] convert(String[] tab){
         int n  = tab.length;
         int j = 0;
         MoveDirection[] notable;

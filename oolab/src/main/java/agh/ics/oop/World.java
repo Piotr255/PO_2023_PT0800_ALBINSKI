@@ -16,7 +16,7 @@ public class World {
     }
     public static void main(String[] args){
         System.out.println("start");
-        run(OptionsParser.converse(args));
+        run(OptionsParser.convert(args));
         System.out.println("stop");
     }
 }
