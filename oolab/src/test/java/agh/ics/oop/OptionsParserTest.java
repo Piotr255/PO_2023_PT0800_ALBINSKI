@@ -15,5 +15,6 @@ class OptionsParserTest {
                 MoveDirection.BACKWARD,
                 MoveDirection.LEFT,
                 MoveDirection.RIGHT};
+        assertArrayEquals(expectedtab1,OptionsParser.convert(testtab1));
     }
 }
