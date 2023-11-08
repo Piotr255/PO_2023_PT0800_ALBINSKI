@@ -9,7 +9,7 @@ import java.util.List;
 
 public class OptionsParser{
     public static List<MoveDirection> convert(String[] tab){
-        List<MoveDirection> notable = new LinkedList<>();
+        List<MoveDirection> notable = new LinkedList<>(); //LinkedList bo nie uzyskuję indeksów, głównie tworzę listę w pętli for. Jednocześnie w klasie World iteruję po tej liście, więc tutaj ArrayList miałby przewagę
         for (String s : tab) {
             switch (s) {
                 case "f" -> {

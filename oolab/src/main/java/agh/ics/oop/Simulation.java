@@ -11,7 +11,7 @@ public class Simulation {
     private List<Vector2d> positions;
     private List<MoveDirection> directions;
 
-    private List<Animal> animals = new ArrayList<>();
+    private List<Animal> animals = new ArrayList<>(); //ArrayList bo poniżej często interesuje mnie uzyskiwanie poszczególnych elementów o danym indeksie
     public Simulation(List<Vector2d> positions, List<MoveDirection> directions){
         this.positions = positions;
         this.directions = directions;
@@ -27,10 +27,13 @@ public class Simulation {
         for(MoveDirection direct : directions){
             k = i % j;
             animals.get(k).move(direct);
-            System.out.println("Zwierzę " + k + " : " +animals.get(k)); //animals.get(k).getPosition()
+            System.out.println("Zwierzę " + k + " : " +animals.get(k).getPosition()); //animals.get(k)
             i++;
         }
 
     }
 
+    public List<Animal> getAnimals() {
+        return animals;
+    }
 }

@@ -33,9 +33,9 @@ public class World {
         System.out.println(MapDirection.NORTH.previous());
         System.out.println(MapDirection.EAST.toUnitVector());*/
 
-        /*Animal dog = new Animal(new Vector2d(1, 1));
+        Animal dog = new Animal(new Vector2d(1, 1));
         System.out.println(dog);
-        run(OptionsParser.convert(args));*/
+        run(OptionsParser.convert(args));
 
         List<MoveDirection> directions = OptionsParser.convert(args);
         List<Vector2d> positions = List.of(new Vector2d(2,2), new Vector2d(3,4));
