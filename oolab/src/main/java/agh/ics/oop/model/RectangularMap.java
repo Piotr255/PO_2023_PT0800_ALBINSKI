@@ -37,10 +37,9 @@ public class RectangularMap implements WorldMap{
     @Override
     public void move(Animal animal, MoveDirection direction) {
         if (animals.containsValue(animal)){
-            animal.move(direction);
-            if (place(animal)){
-                animals.remove(animal.getPosition());
-            }
+            animal.move(direction,this);
+            animals.remove(animal.getPosition());  //jeżeli z jakiś powodów zwierzę się poruszy to po prostu zwierzę się usunie i doda się
+            animals.put(animal.getPosition(),animal); //zamieniłem z place na put, żeby nie wykonywać canMoveTo dwukrotnie
         }
     }
 

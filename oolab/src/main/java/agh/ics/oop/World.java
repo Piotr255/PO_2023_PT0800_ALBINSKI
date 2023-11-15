@@ -39,15 +39,16 @@ public class World {
         Simulation simulation = new Simulation(positions, directions);
         simulation.run();
         */
-
+        Animal animal0 = new Animal();
         Animal animal1 = new Animal(new Vector2d(4, 4));
-        Animal animal2 = new Animal(new Vector2d(2, 2));
+        Animal animal2 = new Animal(new Vector2d(2, 3));
         RectangularMap testMap = new RectangularMap(6,6);
+        testMap.place(animal0);
         testMap.place(animal1);
-
 
         testMap.place(animal2);
         System.out.println(testMap);
+
 
 
     }

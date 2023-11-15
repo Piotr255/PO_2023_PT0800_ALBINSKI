@@ -4,28 +4,31 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Animal {
-    private MapDirection orientation = MapDirection.NORTH;
-    private Vector2d position = new Vector2d(2,2);
+    private MapDirection orientation;
+    private Vector2d position;
 
 
     public Animal(){
+        orientation = MapDirection.NORTH;
+        position = new Vector2d(2,2);
 
     }
 
     public Animal(Vector2d position) {
+        this();
         this.position = position;
     }
 
     @Override
     public String toString() {
-        return orientation + " " + position;
+        return orientation.toString();
     }
 
     public boolean isAt(Vector2d position){
         return this.position.equals(position);
     }
 
-    public void move(MoveDirection direction){
+    public void move(MoveDirection direction, MoveValidator validator){
         switch (direction) {
             case LEFT -> {
                 orientation = orientation.previous();
@@ -36,14 +39,14 @@ public class Animal {
             }
             case FORWARD -> {
                 Vector2d possiblePosition = position.add(orientation.toUnitVector());
-                if (possiblePosition.getX() >= 0 && possiblePosition.getX() <= 4 && possiblePosition.getY() >= 0 && possiblePosition.getY() <= 4){
+                if (validator.canMoveTo(possiblePosition)){
                     position = possiblePosition;
                 }
 
             }
             case BACKWARD -> {
                 Vector2d possiblePosition = position.subtract(orientation.toUnitVector());
-                if (possiblePosition.getX() >= 0 && possiblePosition.getX() <= 4 && possiblePosition.getY() >= 0 && possiblePosition.getY() <= 4){
+                if (validator.canMoveTo(possiblePosition)){
                     position = possiblePosition;
                 }
 
