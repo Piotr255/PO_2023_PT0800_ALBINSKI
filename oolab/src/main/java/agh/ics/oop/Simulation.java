@@ -27,6 +27,10 @@ public class Simulation {
         int counter = 0;
         int animalsSize = animals.size();
         int modVal = 0;
+        for(Animal animal: animals){
+            simulationMap.place(animal);
+        }
+        System.out.println(simulationMap);
         for(MoveDirection direct : directions){
             modVal = counter % animalsSize;
             simulationMap.move(animals.get(modVal),direct);
@@ -39,4 +43,9 @@ public class Simulation {
      List<Animal> getAnimals() {
         return Collections.unmodifiableList(animals);
     }
+
+    public WorldMap getSimulationMap() { //do testów
+        return simulationMap;
+    }
 }
+

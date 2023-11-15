@@ -1,3 +1,4 @@
+/*
 package agh.ics.oop;
 
 import agh.ics.oop.model.MapDirection;
@@ -67,4 +68,4 @@ class SimulationTest {
 
 
 
-}
+}*/

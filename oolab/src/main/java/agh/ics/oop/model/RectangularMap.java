@@ -2,6 +2,7 @@ package agh.ics.oop.model;
 
 import agh.ics.oop.model.util.MapVisualizer;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Vector;
@@ -37,8 +38,8 @@ public class RectangularMap implements WorldMap{
     @Override
     public void move(Animal animal, MoveDirection direction) {
         if (animals.containsValue(animal)){
+            animals.remove(animal.getPosition()); //jeżeli z jakiś powodów zwierzę się nie poruszy to po prostu zwierzę się usunie i doda się z powrotem
             animal.move(direction,this);
-            animals.remove(animal.getPosition());  //jeżeli z jakiś powodów zwierzę się poruszy to po prostu zwierzę się usunie i doda się
             animals.put(animal.getPosition(),animal); //zamieniłem z place na put, żeby nie wykonywać canMoveTo dwukrotnie
         }
     }
@@ -57,5 +58,9 @@ public class RectangularMap implements WorldMap{
     public String toString() {
         MapVisualizer mapToPrint = new MapVisualizer(this);
         return mapToPrint.draw(dimensionMin,dimensionMax);
+    }
+
+    public Map<Vector2d, Animal> getAnimals() { //do testów
+        return Collections.unmodifiableMap(animals);
     }
 }

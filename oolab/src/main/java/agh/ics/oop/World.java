@@ -45,7 +45,12 @@ public class World {
         RectangularMap testMap = new RectangularMap(6,6);
         testMap.place(animal0);
         testMap.place(animal1);
-
+        testMap.move(animal0,MoveDirection.FORWARD);
+        testMap.move(animal0,MoveDirection.FORWARD);
+        testMap.move(animal0,MoveDirection.LEFT);
+        testMap.move(animal0,MoveDirection.RIGHT);
+        testMap.move(animal0,MoveDirection.RIGHT);
+        testMap.move(animal1,MoveDirection.BACKWARD);
         testMap.place(animal2);
         System.out.println(testMap);
 
