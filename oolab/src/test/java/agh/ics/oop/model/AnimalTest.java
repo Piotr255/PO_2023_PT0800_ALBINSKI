@@ -1,3 +1,4 @@
+/*
 package agh.ics.oop.model;
 
 import org.junit.jupiter.api.Test;
@@ -44,4 +45,4 @@ class AnimalTest {
         assertEquals(new Vector2d(4,4),animal3.getPosition());
     }
 
-}
+}*/

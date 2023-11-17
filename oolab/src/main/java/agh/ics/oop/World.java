@@ -1,10 +1,7 @@
 
 package agh.ics.oop;
 
-import agh.ics.oop.model.Animal;
-import agh.ics.oop.model.MapDirection;
-import agh.ics.oop.model.MoveDirection;
-import agh.ics.oop.model.Vector2d;
+import agh.ics.oop.model.*;
 
 import java.util.List;
 
@@ -32,7 +29,7 @@ public class World {
         System.out.println(MapDirection.NORTH.next());
         System.out.println(MapDirection.NORTH.previous());
         System.out.println(MapDirection.EAST.toUnitVector());*/
-
+/*
         Animal dog = new Animal(new Vector2d(1, 1));
         System.out.println(dog);
         run(OptionsParser.convert(args));
@@ -41,6 +38,24 @@ public class World {
         List<Vector2d> positions = List.of(new Vector2d(2,2), new Vector2d(3,4));
         Simulation simulation = new Simulation(positions, directions);
         simulation.run();
+        */
+        Animal animal0 = new Animal();
+        Animal animal1 = new Animal(new Vector2d(4, 4));
+        Animal animal2 = new Animal(new Vector2d(2, 3));
+        RectangularMap testMap = new RectangularMap(6,6);
+        testMap.place(animal0);
+        testMap.place(animal1);
+        testMap.move(animal0,MoveDirection.FORWARD);
+        testMap.move(animal0,MoveDirection.FORWARD);
+        testMap.move(animal0,MoveDirection.LEFT);
+        testMap.move(animal0,MoveDirection.RIGHT);
+        testMap.move(animal0,MoveDirection.RIGHT);
+        testMap.move(animal1,MoveDirection.BACKWARD);
+        testMap.place(animal2);
+        System.out.println(testMap);
+
+
+
     }
 }
 
