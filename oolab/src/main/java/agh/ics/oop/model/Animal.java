@@ -7,7 +7,7 @@ public class Animal {
     private MapDirection orientation;
     private Vector2d position;
 
-
+/*
     public Animal(){
         orientation = MapDirection.NORTH;
         position = new Vector2d(2,2);
@@ -16,6 +16,15 @@ public class Animal {
 
     public Animal(Vector2d position) {
         this();
+        this.position = position;
+    }*/
+
+    public Animal() {
+        this(new Vector2d(2, 2));
+    }
+
+    public Animal(Vector2d position) {
+        this.orientation = MapDirection.NORTH;
         this.position = position;
     }
 

@@ -14,7 +14,7 @@ class SimulationTest1 {
     void run(){
         WorldMap simulationMap = new RectangularMap(5, 5);
         List<MoveDirection> directions = OptionsParser.convert(new String[]{"l","l","f","f","d",});
-        List<Vector2d> positions = List.of(new Vector2d(2,2),new Vector2d(4,4));
+        List<Vector2d> positions = List.of(new Vector2d(2,2),new Vector2d(2,2),new Vector2d(4,4));
         Simulation simulation = new Simulation(positions, directions,simulationMap);
         simulation.run();
         assertTrue(((RectangularMap) simulation.getSimulationMap()).getAnimals().containsKey(new Vector2d(1,2)));

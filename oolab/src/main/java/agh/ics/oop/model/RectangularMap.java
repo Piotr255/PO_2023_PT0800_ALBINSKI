@@ -9,13 +9,11 @@ import java.util.Vector;
 
 public class RectangularMap implements WorldMap{
     private Map<Vector2d, Animal> animals = new HashMap<>();
-    private int width;
-    private int height;
-    private Vector2d dimensionMin = new Vector2d(0,0);
+    MapVisualizer mapToPrint = new MapVisualizer(this);
+    private Vector2d dimensionMin;
     private Vector2d dimensionMax;
     public RectangularMap(int width, int height){
-        this.width = width;
-        this.height = height;
+        dimensionMin  = new Vector2d(0,0);
         dimensionMax = new Vector2d(width-1,height-1);
 
     }
@@ -56,7 +54,6 @@ public class RectangularMap implements WorldMap{
 
     @Override
     public String toString() {
-        MapVisualizer mapToPrint = new MapVisualizer(this);
         return mapToPrint.draw(dimensionMin,dimensionMax);
     }
 

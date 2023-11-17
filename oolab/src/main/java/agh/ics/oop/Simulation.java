@@ -22,14 +22,28 @@ public class Simulation {
             animals.add(new Animal(position));
         }
     }
+    /* dobrze animals.removeIf(animal -> !simulationMap.place(animal));*/
 
+    /* dobrze
+    Iterator<Animal> iterator = animals.iterator();
+while (iterator.hasNext()) {
+    Animal animal = iterator.next();
+    if (!simulationMap.place(animal)) {
+        iterator.remove();
+    }
+}
+*/
+
+    /*   źle  for(Animal animal: animals){
+            if(!simulationMap.place(animal)){
+                animals.remove(animal);
+            }
+        }*/
     public void run(){
         int counter = 0;
-        int animalsSize = animals.size();
         int modVal = 0;
-        for(Animal animal: animals){
-            simulationMap.place(animal);
-        }
+        animals.removeIf(animal -> !simulationMap.place(animal));
+        int animalsSize = animals.size();
         System.out.println(simulationMap);
         for(MoveDirection direct : directions){
             modVal = counter % animalsSize;
@@ -44,7 +58,7 @@ public class Simulation {
         return Collections.unmodifiableList(animals);
     }
 
-    public WorldMap getSimulationMap() { //do testów
+     WorldMap getSimulationMap() { //do testów
         return simulationMap;
     }
 }
