@@ -6,7 +6,7 @@ import java.util.Iterator;
 import java.util.Random;
 
 public class RandomPositionGenerator implements Iterable<Vector2d>{
-    private long seed = 2345L;
+    private long seed = 12345L;
     private Random rand = new Random(seed);
     private int grassCount;
     private int maxWidth;

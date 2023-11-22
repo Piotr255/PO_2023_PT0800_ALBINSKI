@@ -4,6 +4,8 @@ import agh.ics.oop.model.util.MapVisualizer;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
+import java.util.Vector;
 
 public class GrassField implements WorldMap {
     private int grassNumber;
@@ -13,7 +15,7 @@ public class GrassField implements WorldMap {
     public GrassField(int grassNumber) {
         this.grassNumber = grassNumber;
         double ceil = Math.ceil(Math.sqrt(grassNumber * 10));
-        RandomPositionGenerator randomPositionGenerator = new RandomPositionGenerator((int) ceil,(int) ceil, grassNumber);
+        RandomPositionGenerator randomPositionGenerator = new RandomPositionGenerator((int) ceil+1,(int) ceil+1, grassNumber);
         for(Vector2d grassPosition : randomPositionGenerator) {
             grasses.put(grassPosition, new Grass(grassPosition));
         }
@@ -58,8 +60,32 @@ public class GrassField implements WorldMap {
             return grasses.getOrDefault(position,null);
         }
     }
+
+    public Vector2d dimensionMax(){
+/*        Set<Vector2d> keysAnimals = animals.keySet();
+        Set<Vector2d> keysGrasses = grasses.keySet();*/
+        int xValMax = 0;
+        int yValMax = 0;
+        for (Vector2d element: animals.keySet()){
+            if (element.getX()>xValMax){
+                xValMax = element.getX();
+            }
+            if (element.getY()>yValMax){
+                yValMax = element.getY();
+            }
+        }
+        for (Vector2d element: grasses.keySet()){
+            if (element.getX()>xValMax){
+                xValMax = element.getX();
+            }
+            if (element.getY()>yValMax){
+                yValMax = element.getY();
+            }
+        }
+        return new Vector2d(xValMax,yValMax);
+    }
     @Override
     public String toString() {
-        return mapToPrint.draw(dimensionMin,dimensionMax);
+        return mapToPrint.draw(new Vector2d(0,0),dimensionMax());
     }
 }

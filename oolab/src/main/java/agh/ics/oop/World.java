@@ -41,11 +41,12 @@ public class World {
         Simulation simulation = new Simulation(positions, directions);
         simulation.run();
         */
+
 /*
         Animal animal0 = new Animal();
         Animal animal1 = new Animal(new Vector2d(4, 4));
         Animal animal2 = new Animal(new Vector2d(2, 3));
-        RectangularMap testMap = new RectangularMap(6,6);
+        GrassField testMap = new GrassField(13);
         testMap.place(animal0);
         testMap.place(animal1);
         testMap.move(animal0,MoveDirection.FORWARD);
@@ -57,13 +58,19 @@ public class World {
         testMap.place(animal2);
         System.out.println(testMap);
 */
+
+
         List<Vector2d> testRand = new ArrayList<>();
 
-        RandomPositionGenerator randomPositionGenerator = new RandomPositionGenerator(50, 50, 10);
+        RandomPositionGenerator randomPositionGenerator = new RandomPositionGenerator(50, 50, 70);
         for(Vector2d grassPosition : randomPositionGenerator) {
             testRand.add( grassPosition);
         }
         System.out.println(testRand);
+
+
+
+
 
     }
 }
