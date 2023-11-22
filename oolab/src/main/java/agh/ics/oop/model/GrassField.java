@@ -2,15 +2,10 @@ package agh.ics.oop.model;
 
 import agh.ics.oop.model.util.MapVisualizer;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
-import java.util.Vector;
+import java.util.*;
 
-public class GrassField implements WorldMap {
+public class GrassField extends AbstractWorldMap {
     private int grassNumber;
-    private MapVisualizer mapToPrint = new MapVisualizer(this);
-    private Map<Vector2d, Animal> animals = new HashMap<>();
     private Map<Vector2d, Grass> grasses = new HashMap<>();
     public GrassField(int grassNumber) {
         this.grassNumber = grassNumber;
@@ -26,29 +21,13 @@ public class GrassField implements WorldMap {
         return !animals.containsKey(position);
     }
 
-    @Override
-    public boolean place(Animal animal) {
-        if (canMoveTo(animal.getPosition())){
-            animals.put(animal.getPosition(),animal);
-            return true;
-        }
-        else{
-            return false;
-        }
-    }
 
-    @Override
-    public void move(Animal animal, MoveDirection direction) {
-        if (animals.containsValue(animal)){
-            animals.remove(animal.getPosition());
-            animal.move(direction,this);
-            animals.put(animal.getPosition(),animal);
-        }
-    }
+
+
 
     @Override
     public boolean isOccupied(Vector2d position) {
-        return animals.containsKey(position) || grasses.containsKey(position);
+        return super.isOccupied(position) || grasses.containsKey(position);
     }
 
     @Override
@@ -110,5 +89,12 @@ public class GrassField implements WorldMap {
     @Override
     public String toString() {
         return mapToPrint.draw(dimensionMin(),dimensionMax());
+    }
+    @Override
+    public HashSet<WorldElement> getElements(){
+        HashSet<WorldElement> firstSet = super.getElements();
+        Set<WorldElement> grassesSet = new HashSet<>(grasses.values());
+        firstSet.addAll(grassesSet);
+        return firstSet;
     }
 }

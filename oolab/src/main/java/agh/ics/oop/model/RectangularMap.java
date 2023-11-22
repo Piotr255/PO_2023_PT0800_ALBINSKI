@@ -7,9 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Vector;
 
-public class RectangularMap implements WorldMap{
-    private Map<Vector2d, Animal> animals = new HashMap<>();
-    MapVisualizer mapToPrint = new MapVisualizer(this);
+public class RectangularMap extends AbstractWorldMap{
     private Vector2d dimensionMin;
     private Vector2d dimensionMax;
     public RectangularMap(int width, int height){
@@ -23,29 +21,8 @@ public class RectangularMap implements WorldMap{
         return !isOccupied(position) && position.precedes(dimensionMax) && position.follows(dimensionMin);
     }
 
-    @Override
-    public boolean place(Animal animal) {
-        if (canMoveTo(animal.getPosition())){
-            animals.put(animal.getPosition(),animal);
-            return true;
-        }
-        else{
-            return false;
-        }
-    }
-    @Override
-    public void move(Animal animal, MoveDirection direction) {
-        if (animals.containsValue(animal)){
-            animals.remove(animal.getPosition()); //jeżeli z jakiś powodów zwierzę się nie poruszy to po prostu zwierzę się usunie i doda się z powrotem
-            animal.move(direction,this);
-            animals.put(animal.getPosition(),animal); //zamieniłem z place na put, żeby nie wykonywać canMoveTo dwukrotnie
-        }
-    }
 
-    @Override
-    public boolean isOccupied(Vector2d position) {
-        return animals.containsKey(position);
-    }
+
 
     @Override
     public Animal objectAt(Vector2d position) {

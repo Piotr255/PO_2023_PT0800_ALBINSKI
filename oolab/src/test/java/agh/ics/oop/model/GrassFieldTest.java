@@ -23,10 +23,10 @@ class GrassFieldTest {
         testMap.move(animal,MoveDirection.FORWARD);
         testMap.move(animal1,MoveDirection.BACKWARD);
         System.out.println(testMap);
-        assertTrue(testMap.canMoveTo(new Vector2d(2,7))); //wejście na trawę
+        assertTrue(testMap.canMoveTo(new Vector2d(3,7))); //wejście na trawę
         assertTrue(testMap.isOccupied(new Vector2d(1,10))); //jakaś trawa
         assertEquals(animal,testMap.objectAt(new Vector2d(-1,5))); //przemieszczenie animal
-        assertTrue(testMap.isOccupied(new Vector2d(2,6))); //trawa na polu
-        assertEquals(animal1,testMap.objectAt(new Vector2d(2,6))); //zwierzę na polu
+        assertTrue(testMap.isOccupied(new Vector2d(3,7))); //trawa na polu
+        assertEquals(animal1,testMap.objectAt(new Vector2d(2,7))); //zwierzę na polu
     }
 }

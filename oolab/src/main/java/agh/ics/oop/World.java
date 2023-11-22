@@ -48,6 +48,7 @@ public class World {
         Animal animal2 = new Animal(new Vector2d(1, 10));
         Animal animal3 = new Animal(new Vector2d(2, 6));
         GrassField testMap = new GrassField(10);
+        System.out.println(testMap);
         testMap.place(animal0);
         testMap.place(animal1);
         testMap.move(animal0,MoveDirection.FORWARD);
@@ -56,10 +57,12 @@ public class World {
         testMap.move(animal0,MoveDirection.RIGHT);
         testMap.move(animal0,MoveDirection.RIGHT);
         testMap.move(animal1,MoveDirection.BACKWARD);
+
         testMap.place(animal2);
         testMap.place(animal3);
         testMap.move(animal3,MoveDirection.FORWARD);
         System.out.println(testMap);
+        System.out.println(testMap.getElements());
 
 
 

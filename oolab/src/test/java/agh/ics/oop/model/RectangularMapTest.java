@@ -21,11 +21,13 @@ class RectangularMapTest {
         testMap.move(animal,MoveDirection.FORWARD);
         testMap.move(animal,MoveDirection.FORWARD);
         testMap.move(animal1,MoveDirection.BACKWARD);
+        System.out.println(testMap);
         assertFalse(testMap.canMoveTo(new Vector2d(-1,-1)));
         assertTrue(testMap.isOccupied(new Vector2d(0,5)));
         assertEquals(animal,testMap.objectAt(new Vector2d(0,5)));
         assertTrue(testMap.isOccupied(new Vector2d(2,6)));
         assertEquals(animal1,testMap.objectAt(new Vector2d(2,6)));
+        System.out.println(testMap.getElements());
     }
 
 }
