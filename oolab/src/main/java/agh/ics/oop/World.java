@@ -3,6 +3,8 @@ package agh.ics.oop;
 
 import agh.ics.oop.model.*;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -39,6 +41,7 @@ public class World {
         Simulation simulation = new Simulation(positions, directions);
         simulation.run();
         */
+/*
         Animal animal0 = new Animal();
         Animal animal1 = new Animal(new Vector2d(4, 4));
         Animal animal2 = new Animal(new Vector2d(2, 3));
@@ -53,8 +56,14 @@ public class World {
         testMap.move(animal1,MoveDirection.BACKWARD);
         testMap.place(animal2);
         System.out.println(testMap);
+*/
+        List<Vector2d> testRand = new ArrayList<>();
 
-
+        RandomPositionGenerator randomPositionGenerator = new RandomPositionGenerator(50, 50, 10);
+        for(Vector2d grassPosition : randomPositionGenerator) {
+            testRand.add( grassPosition);
+        }
+        System.out.println(testRand);
 
     }
 }
