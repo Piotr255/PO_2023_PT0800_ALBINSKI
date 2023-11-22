@@ -42,11 +42,12 @@ public class World {
         simulation.run();
         */
 
-/*
+        //sprawdzenie poprawności implementacji GrassField
         Animal animal0 = new Animal();
         Animal animal1 = new Animal(new Vector2d(4, 4));
-        Animal animal2 = new Animal(new Vector2d(2, 3));
-        GrassField testMap = new GrassField(13);
+        Animal animal2 = new Animal(new Vector2d(1, 10));
+        Animal animal3 = new Animal(new Vector2d(2, 6));
+        GrassField testMap = new GrassField(10);
         testMap.place(animal0);
         testMap.place(animal1);
         testMap.move(animal0,MoveDirection.FORWARD);
@@ -56,10 +57,13 @@ public class World {
         testMap.move(animal0,MoveDirection.RIGHT);
         testMap.move(animal1,MoveDirection.BACKWARD);
         testMap.place(animal2);
+        testMap.place(animal3);
+        testMap.move(animal3,MoveDirection.FORWARD);
         System.out.println(testMap);
-*/
 
 
+
+/*
         List<Vector2d> testRand = new ArrayList<>();
 
         RandomPositionGenerator randomPositionGenerator = new RandomPositionGenerator(50, 50, 70);
@@ -67,7 +71,9 @@ public class World {
             testRand.add( grassPosition);
         }
         System.out.println(testRand);
+        System.out.println(testRand.size());
 
+*/
 
 
 

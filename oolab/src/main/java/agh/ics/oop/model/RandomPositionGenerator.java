@@ -9,19 +9,17 @@ public class RandomPositionGenerator implements Iterable<Vector2d>{
     private long seed = 12345L;
     private Random rand = new Random(seed);
     private int grassCount;
-    private int maxWidth;
-    private int maxHeight;
-    private int[] xTab;
-    private int[] yTab;
+    private Vector2d[] Vector2dTab;
+
+    private int size;
     public RandomPositionGenerator(int maxWidth, int maxHeight, int grassCount) {
-        this.maxWidth = maxWidth;
-        this.maxHeight = maxHeight;
         this.grassCount = grassCount;
-        xTab = new int[maxWidth];
-        yTab = new int[maxHeight];
-        for (int i = 0; i < maxWidth; i++) { //maxWidth równa się maxHeight w naszym zadaniu
-            xTab[i] = i;
-            yTab[i] = i;
+        size = maxWidth*maxHeight;
+        Vector2dTab = new Vector2d[size];
+        for (int i = 0; i < maxHeight; i++) {
+            for (int j = 0; j < maxWidth; j++){
+                Vector2dTab[i*maxWidth+j] = new Vector2d(i,j);
+            }
         }
 
     }
@@ -34,10 +32,6 @@ public class RandomPositionGenerator implements Iterable<Vector2d>{
 
 
     public class CustomIterator implements Iterator<Vector2d>{
-        private int xRand;
-        private int yRand;
-        private int xVal;
-        private int yVal;
 
         @Override
         public boolean hasNext() {
@@ -46,18 +40,13 @@ public class RandomPositionGenerator implements Iterable<Vector2d>{
 
         @Override
         public Vector2d next() {
-            xRand = rand.nextInt(maxWidth);
-            yRand = rand.nextInt(maxHeight);
-            xVal = xTab[xRand];
-            yVal = yTab[yRand];
+            int vector2dRand = rand.nextInt(size);
+            Vector2d vector2dRandVal = Vector2dTab[vector2dRand];
             grassCount--;
-            maxHeight--;
-            maxWidth--;
-            xTab[xRand] = xTab[maxWidth];
-            xTab[maxWidth] = xVal;
-            yTab[yRand] = yTab[maxHeight];
-            yTab[maxHeight] = yVal;
-            return new Vector2d(xVal,yVal);
+            size--;
+            Vector2dTab[vector2dRand] = Vector2dTab[size];
+            Vector2dTab[size] = vector2dRandVal;
+            return vector2dRandVal;
         }
     }
 
