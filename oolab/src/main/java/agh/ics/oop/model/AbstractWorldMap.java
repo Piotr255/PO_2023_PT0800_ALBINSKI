@@ -39,4 +39,9 @@ abstract public class AbstractWorldMap implements WorldMap {
     public boolean canMoveTo(Vector2d position){
         return !isOccupied(position);
     }
+
+    @Override
+    public WorldElement objectAt(Vector2d position) {
+        return animals.get(position);
+    }
 }

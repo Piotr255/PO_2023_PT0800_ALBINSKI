@@ -20,15 +20,6 @@ public class RectangularMap extends AbstractWorldMap{
 
         return super.canMoveTo(position) && position.precedes(dimensionMax) && position.follows(dimensionMin);
     }
-
-
-
-
-    @Override
-    public Animal objectAt(Vector2d position) {
-        return animals.getOrDefault(position, null);
-    }
-
     @Override
     public String toString() {
         return mapToPrint.draw(dimensionMin,dimensionMax);
