@@ -6,11 +6,12 @@ import java.util.*;
 
 abstract public class AbstractWorldMap implements WorldMap {
     protected  Map<Vector2d, Animal> animals = new HashMap<>();
-    protected MapVisualizer mapToPrint = new MapVisualizer(this);
+    protected MapVisualizer mapVisualizer = new MapVisualizer(this); //poprawić
     @Override
     public boolean place(Animal animal) {
         if (canMoveTo(animal.getPosition())){
             animals.put(animal.getPosition(),animal);
+            //animal.placed = true;
             return true;
         }
         else{
@@ -19,7 +20,8 @@ abstract public class AbstractWorldMap implements WorldMap {
     }
     @Override
     public void move(Animal animal, MoveDirection direction) {
-        if (animals.containsValue(animal)){
+        //Vector2d position1 = animal.getPosition();
+        if (animals.get(animal.getPosition()) == animal){     //animals.containsValue(animal) animalsanimal.getPosition()  animal.placed
             animals.remove(animal.getPosition());
             animal.move(direction,this);
             animals.put(animal.getPosition(),animal);
@@ -37,7 +39,7 @@ abstract public class AbstractWorldMap implements WorldMap {
 
     @Override
     public boolean canMoveTo(Vector2d position){
-        return !isOccupied(position);
+        return !animals.containsKey(position);
     }
 
     @Override

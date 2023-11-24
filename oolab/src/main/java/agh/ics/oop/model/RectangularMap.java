@@ -1,11 +1,7 @@
 package agh.ics.oop.model;
 
-import agh.ics.oop.model.util.MapVisualizer;
-
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.Map;
-import java.util.Vector;
 
 public class RectangularMap extends AbstractWorldMap{
     private Vector2d dimensionMin;
@@ -22,7 +18,7 @@ public class RectangularMap extends AbstractWorldMap{
     }
     @Override
     public String toString() {
-        return mapToPrint.draw(dimensionMin,dimensionMax);
+        return mapVisualizer.draw(dimensionMin,dimensionMax);
     }
 
     public Map<Vector2d, Animal> getAnimals() { //do testów

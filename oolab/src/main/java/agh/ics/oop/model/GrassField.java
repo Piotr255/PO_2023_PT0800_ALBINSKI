@@ -1,7 +1,5 @@
 package agh.ics.oop.model;
 
-import agh.ics.oop.model.util.MapVisualizer;
-
 import java.util.*;
 
 public class GrassField extends AbstractWorldMap {
@@ -16,13 +14,6 @@ public class GrassField extends AbstractWorldMap {
             grasses.put(grassPosition, new Grass(grassPosition));
         }
     }
-
-
-    @Override
-    public boolean canMoveTo(Vector2d position) {
-        return !animals.containsKey(position);
-    }
-
 
 
     @Override
@@ -63,7 +54,7 @@ public class GrassField extends AbstractWorldMap {
         }
         @Override
         public String toString () {
-            return mapToPrint.draw(dimensionMin(), dimensionMax());
+            return mapVisualizer.draw(dimensionMin(), dimensionMax());
         }
         @Override
         public HashSet<WorldElement> getElements () {
