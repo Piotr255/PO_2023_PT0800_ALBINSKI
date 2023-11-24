@@ -3,6 +3,8 @@ package agh.ics.oop;
 
 import agh.ics.oop.model.*;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -39,10 +41,14 @@ public class World {
         Simulation simulation = new Simulation(positions, directions);
         simulation.run();
         */
+
+        //sprawdzenie poprawności implementacji GrassField
         Animal animal0 = new Animal();
         Animal animal1 = new Animal(new Vector2d(4, 4));
-        Animal animal2 = new Animal(new Vector2d(2, 3));
-        RectangularMap testMap = new RectangularMap(6,6);
+        Animal animal2 = new Animal(new Vector2d(1, 10));
+        Animal animal3 = new Animal(new Vector2d(2, 6));
+        GrassField testMap = new GrassField(10);
+        System.out.println(testMap);
         testMap.place(animal0);
         testMap.place(animal1);
         testMap.move(animal0,MoveDirection.FORWARD);
@@ -51,8 +57,27 @@ public class World {
         testMap.move(animal0,MoveDirection.RIGHT);
         testMap.move(animal0,MoveDirection.RIGHT);
         testMap.move(animal1,MoveDirection.BACKWARD);
+
         testMap.place(animal2);
+        testMap.place(animal3);
+        testMap.move(animal3,MoveDirection.FORWARD);
         System.out.println(testMap);
+        System.out.println(testMap.getElements());
+
+
+
+/*
+        List<Vector2d> testRand = new ArrayList<>();
+
+        RandomPositionGenerator randomPositionGenerator = new RandomPositionGenerator(50, 50, 70);
+        for(Vector2d grassPosition : randomPositionGenerator) {
+            testRand.add( grassPosition);
+        }
+        System.out.println(testRand);
+        System.out.println(testRand.size());
+
+*/
+
 
 
 
