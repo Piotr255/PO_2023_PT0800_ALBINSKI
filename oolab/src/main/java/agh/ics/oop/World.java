@@ -79,9 +79,9 @@ public class World {
 */
 
 
+
+
         //List<MoveDirection> testlist = OptionsParser.convert(new String[]{"f", "a"});
-
-
         //observer testy
         Animal animal0 = new Animal();
         Animal animal1 = new Animal(new Vector2d(4, 4));
