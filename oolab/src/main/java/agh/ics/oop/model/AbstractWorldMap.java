@@ -8,14 +8,12 @@ abstract public class AbstractWorldMap implements WorldMap {
     protected  Map<Vector2d, Animal> animals = new HashMap<>();
     protected MapVisualizer mapVisualizer = new MapVisualizer(this); //poprawić
     @Override
-    public boolean place(Animal animal) {
+    public void place(Animal animal) throws PositionAlreadyOccupiedException {
         if (canMoveTo(animal.getPosition())){
             animals.put(animal.getPosition(),animal);
-            //animal.placed = true;
-            return true;
         }
         else{
-            return false;
+            throw new PositionAlreadyOccupiedException(animal.getPosition());
         }
     }
     @Override

@@ -43,7 +43,7 @@ public class World {
         */
 
         //sprawdzenie poprawności implementacji GrassField
-        Animal animal0 = new Animal();
+  /*      Animal animal0 = new Animal();
         Animal animal1 = new Animal(new Vector2d(4, 4));
         Animal animal2 = new Animal(new Vector2d(1, 10));
         Animal animal3 = new Animal(new Vector2d(2, 6));
@@ -63,7 +63,7 @@ public class World {
         testMap.move(animal3,MoveDirection.FORWARD);
         System.out.println(testMap);
         System.out.println(testMap.getElements());
-
+*/
 
 
 /*
@@ -78,6 +78,8 @@ public class World {
 
 */
 
+
+        List<MoveDirection> testlist = OptionsParser.convert(new String[]{"f", "a"});
 
 
 

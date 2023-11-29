@@ -24,6 +24,9 @@ public class OptionsParser{
                 case "r" -> {
                     notable.add(MoveDirection.RIGHT);
                 }
+                default -> {
+                    throw new IllegalArgumentException(s + " is not legal move specification");
+                }
             }
         }
         return notable;
