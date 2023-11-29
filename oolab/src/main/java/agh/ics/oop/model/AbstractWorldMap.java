@@ -44,4 +44,15 @@ abstract public class AbstractWorldMap implements WorldMap {
     public WorldElement objectAt(Vector2d position) {
         return animals.get(position);
     }
+
+
+    @Override
+    public abstract Boundary getCurrentBounds();
+    @Override
+    public String toString() {
+        return mapVisualizer.draw(getCurrentBounds().leftBottom(), getCurrentBounds().rightTop());
+    }
+
 }
+
+

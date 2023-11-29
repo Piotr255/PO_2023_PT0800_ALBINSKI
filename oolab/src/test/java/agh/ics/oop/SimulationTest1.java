@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class SimulationTest1 {
 
     @Test
-
+    //wyrzuca error spowodowany OptionParser
     void run(){
         WorldMap simulationMap = new RectangularMap(5, 5);
         List<MoveDirection> directions = OptionsParser.convert(new String[]{"l","l","f","f","d"});
@@ -23,6 +23,7 @@ class SimulationTest1 {
         assertEquals(MapDirection.WEST,((RectangularMap) simulation.getSimulationMap()).getAnimals().get(new Vector2d(3,4)).getOrientation());
     }
     @Test
+    // przechodzi z wyjątkiem
     void run1(){
         WorldMap simulationMap = new RectangularMap(5, 5);
         List<MoveDirection> directions = OptionsParser.convert(new String[]{"l","l","f","f"});
