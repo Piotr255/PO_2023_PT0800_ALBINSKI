@@ -46,11 +46,11 @@ while (iterator.hasNext()) {
         int counter = 0;
         int modVal = 0;
         int animalsSize = animals.size();
-        System.out.println(simulationMap);
+//        System.out.println(simulationMap);
         for(MoveDirection direct : directions){
             modVal = counter % animalsSize;
             simulationMap.move(animals.get(modVal),direct);
-            System.out.println(simulationMap);
+//            System.out.println(simulationMap);
             counter++;
         }
 

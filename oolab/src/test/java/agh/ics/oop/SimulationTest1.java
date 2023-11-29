@@ -8,7 +8,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class SimulationTest1 {
-
+    //WorldMap simulationMap = new RectangularMap(5, 5);
     @Test
     //wyrzuca error spowodowany OptionParser
     void run(){
