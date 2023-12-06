@@ -6,16 +6,18 @@ import java.util.Iterator;
 import java.util.Random;
 
 public class RandomPositionGenerator implements Iterable<Vector2d>{
-    private long seed = 12345L;
-    private Random rand = new Random(seed);
+    private long seed; //= 12345L;
+    private Random rand;// = new Random(seed);
     private int grassCount;
     private Vector2d[] Vector2dTab;
 
     private int size;
-    public RandomPositionGenerator(int maxWidth, int maxHeight, int grassCount) {
+    public RandomPositionGenerator(int maxWidth, int maxHeight, int grassCount, long seed) {
         this.grassCount = grassCount;
         size = maxWidth*maxHeight;
         Vector2dTab = new Vector2d[size];
+        this.seed = seed;
+        rand = new Random(seed);
         for (int i = 0; i < maxHeight; i++) {
             for (int j = 0; j < maxWidth; j++){
                 Vector2dTab[i*maxWidth+j] = new Vector2d(i,j);

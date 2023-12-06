@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class RectangularMapTest {
 
     @Test
-    void exampleTest() {
+    void exampleTest() throws PositionAlreadyOccupiedException {
         RectangularMap testMap = new RectangularMap(10,10);
         Animal animal = new Animal(new Vector2d(5,5));
         Animal animal1 = new Animal(new Vector2d(2,7));

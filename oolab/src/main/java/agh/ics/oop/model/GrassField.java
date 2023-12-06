@@ -9,7 +9,7 @@ public class GrassField extends AbstractWorldMap {
     public GrassField(int grassNumber) {
         this.grassNumber = grassNumber;
         double ceil = Math.floor(Math.sqrt(grassNumber * 10) + 1);
-        RandomPositionGenerator randomPositionGenerator = new RandomPositionGenerator((int) ceil, (int) ceil, grassNumber);
+        RandomPositionGenerator randomPositionGenerator = new RandomPositionGenerator((int) ceil, (int) ceil, grassNumber, 12345L);
         for (Vector2d grassPosition : randomPositionGenerator) {
             grasses.put(grassPosition, new Grass(grassPosition));
         }
@@ -52,14 +52,16 @@ public class GrassField extends AbstractWorldMap {
             }
             return ValsMin;
         }
-        @Override
-        public String toString () {
-            return mapVisualizer.draw(dimensionMin(), dimensionMax());
-        }
+
         @Override
         public HashSet<WorldElement> getElements () {
             HashSet<WorldElement> firstSet = super.getElements();
             firstSet.addAll(grasses.values());
             return firstSet;
         }
+
+    @Override
+    public Boundary getCurrentBounds() {
+        return new Boundary(dimensionMin(),dimensionMax());
     }
+}
