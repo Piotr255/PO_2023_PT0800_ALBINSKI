@@ -4,11 +4,14 @@ import agh.ics.oop.Simulation;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class SimulationEngine {
     private List<Simulation> simulations;
     private List<Thread> threads = new ArrayList<>();
 
+    private ExecutorService executorService = Executors.newFixedThreadPool(4);
     public SimulationEngine(List<Simulation> simulations) {
         this.simulations = simulations;
     }
@@ -31,6 +34,9 @@ public class SimulationEngine {
             thread.join();
         }
 
+   /* public void runAsyncInThreadPool(){
+
+        }*/
 
     }
 }
