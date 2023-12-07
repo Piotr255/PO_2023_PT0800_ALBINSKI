@@ -172,7 +172,8 @@ public class World {
         try {
             simulationEngine.awaitSimulationsEnd();
         } catch (InterruptedException e) {
-            throw new RuntimeException(e);
+            //throw new RuntimeException(e);
+            System.out.println("nie udało się pomyślnie przerwać silnika symulacji");
         }
         System.out.println("koniec programu!!!");
     }
