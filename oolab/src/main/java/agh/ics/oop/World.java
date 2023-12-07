@@ -157,12 +157,20 @@ public class World {
             simulations.add(simulation);
             simulations.add(simulation1);
         }
-        System.out.println(simulations.size());
+        //System.out.println(simulations.size());
         SimulationEngine simulationEngine = new SimulationEngine(simulations);
 
         //simulationEngine.runSync();
-        try {
+     /*   try {
             simulationEngine.runAsync();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+*/
+
+        simulationEngine.runAsyncInThreadPool();
+        try {
+            simulationEngine.awaitSimulationsEnd();
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
