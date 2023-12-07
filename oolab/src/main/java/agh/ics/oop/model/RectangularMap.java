@@ -2,10 +2,13 @@ package agh.ics.oop.model;
 
 import java.util.Collections;
 import java.util.Map;
+import java.util.UUID;
 
 public class RectangularMap extends AbstractWorldMap{
     private final Boundary boundary;
+
     public RectangularMap(int width, int height){
+        this.id = UUID.randomUUID();
         boundary = new Boundary(new Vector2d(0,0),new Vector2d(width-1,height-1));
     }
     @Override

@@ -3,10 +3,7 @@ package agh.ics.oop.model;
 import agh.ics.oop.model.MoveDirection;
 import agh.ics.oop.model.Vector2d;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 /**
  * The interface responsible for interacting with the map of the world.
@@ -51,4 +48,6 @@ public interface WorldMap extends MoveValidator {
     HashSet<WorldElement> getElements();
 
     Boundary getCurrentBounds();
+
+    UUID getId();
 }

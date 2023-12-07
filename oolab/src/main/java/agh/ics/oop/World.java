@@ -80,6 +80,7 @@ public class World {
 
 
 
+/*
 
         //List<MoveDirection> testlist = OptionsParser.convert(new String[]{"f", "a"});
         //observer testy
@@ -112,6 +113,22 @@ public class World {
         simulation.run();
 //        System.out.println(testMap);
 //        System.out.println(testMap.getElements());
+
+*/
+
+        WorldMap simulationMap = new RectangularMap(5, 5);
+        List<MoveDirection> directions = OptionsParser.convert(new String[]{"l","l","r","f","f","f","f", "l", "r", "b"});
+        List<Vector2d> positions = List.of(new Vector2d(2,2),new Vector2d(2,2),new Vector2d(4,4));
+        Simulation simulation = new Simulation(positions, directions,simulationMap);
+        WorldMap simulationMap1 = new GrassField(10);
+        List<MoveDirection> directions1 = OptionsParser.convert(new String[]{"l","l","f","f","r","r","b","f"});
+        List<Vector2d> positions1 = List.of(new Vector2d(2,2),new Vector2d(2,2),new Vector2d(4,4));
+        Simulation simulation1 = new Simulation(positions, directions,simulationMap1);
+        List<Simulation> simulations = new ArrayList<>();
+        simulations.add(simulation);
+        simulations.add(simulation1);
+        SimulationEngine simulationEngine = new SimulationEngine(simulations);
+        simulationEngine.runSync();
 
 
     }
