@@ -20,7 +20,7 @@ public class World {
             }
         }
     }
-    public static void main(String[] args) throws PositionAlreadyOccupiedException {
+    public static void main(String[] args)  {
 /*      Vector2d position1 = new Vector2d(1,2);
         System.out.println(position1);
         Vector2d position2 = new Vector2d(-2,1);
@@ -80,6 +80,7 @@ public class World {
 
 
 
+/*
 
         //List<MoveDirection> testlist = OptionsParser.convert(new String[]{"f", "a"});
         //observer testy
@@ -113,7 +114,70 @@ public class World {
 //        System.out.println(testMap);
 //        System.out.println(testMap.getElements());
 
+*/
+/*
+        RectangularMap simulationMap = new RectangularMap(5, 5);
+        simulationMap.subscribe(new ConsoleMapDisplay());
+        List<MoveDirection> directions = OptionsParser.convert(new String[]{"l","l","r","f","f","f","f", "l", "r", "b"});
+        List<Vector2d> positions = List.of(new Vector2d(2,2),new Vector2d(2,2),new Vector2d(4,4));
+        Simulation simulation = new Simulation(positions, directions,simulationMap);
+        GrassField simulationMap1 = new GrassField(10);
+        simulationMap1.subscribe(new ConsoleMapDisplay());
+        List<MoveDirection> directions1 = OptionsParser.convert(new String[]{"l","l","f","f","r","r","b","f"});
+        List<Vector2d> positions1 = List.of(new Vector2d(2,2),new Vector2d(2,2),new Vector2d(4,4));
+        Simulation simulation1 = new Simulation(positions1, directions1,simulationMap1);
+        List<Simulation> simulations = new ArrayList<>();
+        simulations.add(simulation);
+        simulations.add(simulation1);
+        SimulationEngine simulationEngine = new SimulationEngine(simulations);
+        //simulationEngine.runSync();
+        try {
+            simulationEngine.runAsync();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }*/
 
+        //System.out.println("koniec programu!!!");
+
+
+        List<MoveDirection> directions = OptionsParser.convert(new String[]{"l","l","r","f","f","f","f", "l", "r", "b"});
+        List<Vector2d> positions = List.of(new Vector2d(2,2),new Vector2d(2,2),new Vector2d(4,4));
+        List<MoveDirection> directions1 = OptionsParser.convert(new String[]{"l","l","f","f","r","r","b","f"});
+        List<Vector2d> positions1 = List.of(new Vector2d(2,2),new Vector2d(2,2),new Vector2d(4,4));
+        List<Simulation> simulations = new ArrayList<>();
+        //RectangularMap simulationMap = new RectangularMap(5, 5);
+        //GrassField simulationMap1 = new GrassField(10);
+        ConsoleMapDisplay consoleMapDisplay = new ConsoleMapDisplay();
+        for (int i = 0; i<500; i++){
+            RectangularMap simulationMap = new RectangularMap(5, 5);
+            simulationMap.subscribe(consoleMapDisplay);
+            Simulation simulation = new Simulation(positions, directions,simulationMap);
+            GrassField simulationMap1 = new GrassField(10);
+            simulationMap1.subscribe(new ConsoleMapDisplay());
+            Simulation simulation1 = new Simulation(positions1, directions1,simulationMap1);
+            simulations.add(simulation);
+            simulations.add(simulation1);
+        }
+        //System.out.println(simulations.size());
+        SimulationEngine simulationEngine = new SimulationEngine(simulations);
+
+        //simulationEngine.runSync();
+     /*   try {
+            simulationEngine.runAsync();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+*/
+
+        simulationEngine.runAsyncInThreadPool();
+
+        try {
+            simulationEngine.awaitSimulationsEnd();
+        } catch (InterruptedException e) {
+            System.out.println("przerwano wątek główny");
+        }
+
+        System.out.println("koniec programu!!!");
     }
 }
 

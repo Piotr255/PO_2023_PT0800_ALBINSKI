@@ -7,7 +7,9 @@ import java.util.*;
 abstract public class AbstractWorldMap implements WorldMap {
     protected List<MapChangeListener> subscribers = new ArrayList<>();
     protected  Map<Vector2d, Animal> animals = new HashMap<>();
-    protected MapVisualizer mapVisualizer = new MapVisualizer(this); //poprawić
+    protected MapVisualizer mapVisualizer = new MapVisualizer(this);
+    private final UUID id = UUID.randomUUID();
+
     @Override
     public void place(Animal animal) throws PositionAlreadyOccupiedException {
         if (canMoveTo(animal.getPosition())){
@@ -53,7 +55,8 @@ abstract public class AbstractWorldMap implements WorldMap {
     public abstract Boundary getCurrentBounds();
     @Override
     public String toString() {
-        return mapVisualizer.draw(getCurrentBounds().leftBottom(), getCurrentBounds().rightTop());
+        Boundary boundary = getCurrentBounds();
+        return mapVisualizer.draw(boundary.leftBottom(), boundary.rightTop());
     }
 
     public void subscribe(MapChangeListener observer){
@@ -66,6 +69,12 @@ abstract public class AbstractWorldMap implements WorldMap {
         for(MapChangeListener observer : subscribers){
             observer.mapChanged(this,message);
         }
+    }
+
+
+    @Override
+    public UUID getId() {
+        return id;
     }
 }
 

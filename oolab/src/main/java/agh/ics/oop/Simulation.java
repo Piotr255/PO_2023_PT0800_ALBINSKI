@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Simulation {
+public class Simulation implements Runnable {
     private List<Vector2d> positions;
     private List<MoveDirection> directions;
     private WorldMap simulationMap;
