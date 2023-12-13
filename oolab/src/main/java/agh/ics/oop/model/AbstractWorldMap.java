@@ -8,11 +8,7 @@ abstract public class AbstractWorldMap implements WorldMap {
     protected List<MapChangeListener> subscribers = new ArrayList<>();
     protected  Map<Vector2d, Animal> animals = new HashMap<>();
     protected MapVisualizer mapVisualizer = new MapVisualizer(this);
-    protected UUID id;
-
-    public AbstractWorldMap() {
-        this.id = UUID.randomUUID();
-    }
+    private final UUID id = UUID.randomUUID();
 
     @Override
     public void place(Animal animal) throws PositionAlreadyOccupiedException {

@@ -7,7 +7,6 @@ public class GrassField extends AbstractWorldMap {
     private Map<Vector2d, Grass> grasses = new HashMap<>();
 
     public GrassField(int grassNumber) {
-        super();
         this.grassNumber = grassNumber;
         double ceil = Math.floor(Math.sqrt(grassNumber * 10) + 1);
         RandomPositionGenerator randomPositionGenerator = new RandomPositionGenerator((int) ceil, (int) ceil, grassNumber, 12345L);

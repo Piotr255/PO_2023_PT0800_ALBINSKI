@@ -28,7 +28,7 @@ public class SimulationEngine {
             threads.add(thread);
             thread.start();
         }
-        awaitSimulationsEnd();
+        //awaitSimulationsEnd();
     }
     public void awaitSimulationsEnd() throws InterruptedException {
         for (Thread thread : threads) {

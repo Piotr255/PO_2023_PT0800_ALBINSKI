@@ -147,9 +147,10 @@ public class World {
         List<Simulation> simulations = new ArrayList<>();
         //RectangularMap simulationMap = new RectangularMap(5, 5);
         //GrassField simulationMap1 = new GrassField(10);
+        ConsoleMapDisplay consoleMapDisplay = new ConsoleMapDisplay();
         for (int i = 0; i<500; i++){
             RectangularMap simulationMap = new RectangularMap(5, 5);
-            simulationMap.subscribe(new ConsoleMapDisplay());
+            simulationMap.subscribe(consoleMapDisplay);
             Simulation simulation = new Simulation(positions, directions,simulationMap);
             GrassField simulationMap1 = new GrassField(10);
             simulationMap1.subscribe(new ConsoleMapDisplay());
@@ -169,12 +170,13 @@ public class World {
 */
 
         simulationEngine.runAsyncInThreadPool();
+
         try {
             simulationEngine.awaitSimulationsEnd();
         } catch (InterruptedException e) {
-            //throw new RuntimeException(e);
-            System.out.println("nie udało się pomyślnie przerwać silnika symulacji");
+            System.out.println("przerwano wątek główny");
         }
+
         System.out.println("koniec programu!!!");
     }
 }
