@@ -9,6 +9,12 @@
             xmlns:fx="http://javafx.com/fxml"
             minHeight="550.0" minWidth="850.0"
             fx:controller="agh.ics.oop.presenter.SimulationPresenter">
+
+    <top>
+        <Label fx:id="positionLabel" text = "symulacja zwierząt">
+
+        </Label>
+    </top>
     <center>
         <Label fx:id="infoLabel" text="All animals will be living here!" textAlignment="CENTER"/>
     </center>
@@ -17,9 +23,6 @@
             <TextField fx:id="textField">
 
             </TextField>
-            <Label text = "label">
-
-            </Label>
             <Button text="Start"  onAction="#onSimulationStartClicked">
 
             </Button>

@@ -33,11 +33,6 @@ public class SimulationApp extends Application {
         BorderPane viewRoot = loader.load();
         SimulationPresenter presenter = loader.getController();
         configureStage(primaryStage,viewRoot);
-        RectangularMap simulationMap = new RectangularMap(5, 5);
-        simulationMap.subscribe(presenter);
-        presenter.setWorldMap(simulationMap);
-        List<MoveDirection> directions = OptionsParser.convert(new String[]{"l","l","r","f","f","f","f", "l", "r", "b"});
-        List<Vector2d> positions = List.of(new Vector2d(2,2),new Vector2d(4,4));
-        Simulation simulation = new Simulation(positions, directions,simulationMap);
+
     }
 }
