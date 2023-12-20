@@ -179,12 +179,22 @@ public class World {
         System.out.println("koniec programu!!!");
     }*/
 
-        RectangularMap simulationMap = new RectangularMap(5, 5);
+      /*  RectangularMap simulationMap = new RectangularMap(5, 5);
         simulationMap.subscribe(new ConsoleMapDisplay());
         List<MoveDirection> directions = OptionsParser.convert(new String[]{"f","f","f","f"});
         List<Vector2d> positions = List.of(new Vector2d(2,2),new Vector2d(4,4));
         Simulation simulation = new Simulation(positions, directions,simulationMap);
         simulation.run();
+*/
+        GrassField simulationMap = new GrassField(10);
+        simulationMap.subscribe(new ConsoleMapDisplay());
+        List<MoveDirection> directions = OptionsParser.convert(new String[]{"f","f","f","f"});
+        List<Vector2d> positions = List.of(new Vector2d(2,2),new Vector2d(4,4));
+        Simulation simulation = new Simulation(positions, directions,simulationMap);
+        List<Simulation> simulations = new ArrayList<>();
+        simulations.add(simulation);
+        SimulationEngine simulationEngine = new SimulationEngine(simulations);
+        simulationEngine.runAsyncInThreadPool();
     }
 }
 

@@ -37,27 +37,45 @@ public class SimulationPresenter implements MapChangeListener {
         mapGrid.getColumnConstraints().clear();
         mapGrid.getRowConstraints().clear();
     }
-    private void drawMap(WorldMap worldMap){
-        //infoLabel.setText(this.worldMap.toString());
+    private void drawMap(WorldMap worldMap) {
         clearGrid();
         Boundary boundary = worldMap.getCurrentBounds();
-        int columns = boundary.rightTop().getX() - boundary.leftBottom().getX() + 1;
-        int rows = boundary.rightTop().getY() - boundary.leftBottom().getY() + 1;
-        for(int i = 0; i <=rows; i++){
+        int xMin = boundary.leftBottom().getX();
+        int xMax = boundary.rightTop().getX();
+        int yMax = boundary.rightTop().getY();
+        int yMin = boundary.leftBottom().getY();
+
+        int columns = xMax - xMin + 1;
+        int rows = yMax - yMin + 1;
+
+        for (int i = 0; i <= columns; i++) {
+            mapGrid.getColumnConstraints().add(new ColumnConstraints(CELL_WIDTH));
+        }
+        for (int i = 0; i <= rows; i++) {
             mapGrid.getRowConstraints().add(new RowConstraints(CELL_HEIGHT));
-            for(int j = 0; j<=columns; j++) {
-                if (i == 0){
-                    mapGrid.getColumnConstraints().add(new ColumnConstraints(CELL_WIDTH));
-                }
-                Node cell = createCell(i-1,columns-j, i, j);
-                mapGrid.add(cell,i, j);
-
-            }
-            }
-
         }
 
-    private Node createCell(int i, int j, int iMap, int jMap) {
+        for (int i = 0; i <= rows; i++) {
+            for (int j = 0; j <= columns; j++) {
+                Label cell;
+                if (i == 0 && j == 0) {
+                    cell = new Label("y/x");
+                } else if (i == 0) {
+                    cell = new Label(String.valueOf(xMin + j - 1));
+                } else if (j == 0) {
+                    cell = new Label(String.valueOf(yMax - i + 1));
+                } else {
+                    cell = createCell(xMin + j - 1, yMax - i + 1);
+                }
+                cell.setMinSize(CELL_WIDTH, CELL_HEIGHT);
+                cell.setStyle("-fx-border-color: black; -fx-alignment: center;");
+                mapGrid.add(cell, j, i);
+            }
+        }
+    }
+
+
+    private Label createCell(int i, int j) {
         WorldElement worldElement = worldMap.objectAt(new Vector2d(i,j));
         Label cell = new Label();
         cell.setMinSize(CELL_WIDTH, CELL_HEIGHT);
@@ -65,17 +83,7 @@ public class SimulationPresenter implements MapChangeListener {
         if ( worldElement != null){
             cell.setText(worldElement.toString());
         }
-        else if (iMap == 0 && jMap == 0){
-            cell.setText("y/x");
-
-        }
-        else if (iMap == 0) {
-            cell.setText(String.valueOf(j));
-        }
-        else if (jMap == 0) {
-            cell.setText(String.valueOf(i));
-
-        } else{
+        else{
             cell.setText("");
         }
         return cell;
@@ -95,13 +103,14 @@ public class SimulationPresenter implements MapChangeListener {
     }
 
     public void onSimulationStartClicked(ActionEvent actionEvent) {
-        RectangularMap simulationMap = new RectangularMap(5, 5);
+        //RectangularMap simulationMap = new RectangularMap(5, 5);
+        GrassField simulationMap = new GrassField(10);
         simulationMap.subscribe(this);
         this.setWorldMap(simulationMap);
         //List<MoveDirection> directions = OptionsParser.convert(new String[]{"l","l","r","f","f","f","f", "l", "r", "b"});
         String[] moves = textField.getText().split(" ");
         List<MoveDirection> directions = OptionsParser.convert(moves);
-        List<Vector2d> positions = List.of(new Vector2d(2,2),new Vector2d(4,4));
+        List<Vector2d> positions = List.of(new Vector2d(2,2),new Vector2d(-4,4));
         Simulation simulation = new Simulation(positions, directions,simulationMap);
         List<Simulation> simulations = new ArrayList<>();
         simulations.add(simulation);
