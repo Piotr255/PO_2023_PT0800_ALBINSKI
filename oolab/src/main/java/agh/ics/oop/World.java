@@ -4,7 +4,6 @@ package agh.ics.oop;
 import agh.ics.oop.model.*;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 
@@ -153,7 +152,7 @@ public class World {
             simulationMap.subscribe(consoleMapDisplay);
             Simulation simulation = new Simulation(positions, directions,simulationMap);
             GrassField simulationMap1 = new GrassField(10);
-            simulationMap1.subscribe(new ConsoleMapDisplay());
+            simulationMap1.subscribe(consoleMapDisplay);
             Simulation simulation1 = new Simulation(positions1, directions1,simulationMap1);
             simulations.add(simulation);
             simulations.add(simulation1);
