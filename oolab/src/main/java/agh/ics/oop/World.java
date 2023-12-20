@@ -138,7 +138,7 @@ public class World {
 
         //System.out.println("koniec programu!!!");
 
-
+/*
         List<MoveDirection> directions = OptionsParser.convert(new String[]{"l","l","r","f","f","f","f", "l", "r", "b"});
         List<Vector2d> positions = List.of(new Vector2d(2,2),new Vector2d(2,2),new Vector2d(4,4));
         List<MoveDirection> directions1 = OptionsParser.convert(new String[]{"l","l","f","f","r","r","b","f"});
@@ -161,12 +161,12 @@ public class World {
         SimulationEngine simulationEngine = new SimulationEngine(simulations);
 
         //simulationEngine.runSync();
-     /*   try {
+     *//*   try {
             simulationEngine.runAsync();
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-*/
+*//*
 
         simulationEngine.runAsyncInThreadPool();
 
@@ -177,6 +177,14 @@ public class World {
         }
 
         System.out.println("koniec programu!!!");
+    }*/
+
+        RectangularMap simulationMap = new RectangularMap(5, 5);
+        simulationMap.subscribe(new ConsoleMapDisplay());
+        List<MoveDirection> directions = OptionsParser.convert(new String[]{"f","f","f","f"});
+        List<Vector2d> positions = List.of(new Vector2d(2,2),new Vector2d(4,4));
+        Simulation simulation = new Simulation(positions, directions,simulationMap);
+        simulation.run();
     }
 }
 
