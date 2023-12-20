@@ -78,8 +78,6 @@ public class SimulationPresenter implements MapChangeListener {
     private Label createCell(int i, int j) {
         WorldElement worldElement = worldMap.objectAt(new Vector2d(i,j));
         Label cell = new Label();
-        cell.setMinSize(CELL_WIDTH, CELL_HEIGHT);
-        cell.setStyle("-fx-border-color: black; -fx-alignment: center;");
         if ( worldElement != null){
             cell.setText(worldElement.toString());
         }
