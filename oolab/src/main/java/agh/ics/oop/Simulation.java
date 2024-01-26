@@ -15,15 +15,7 @@ public class Simulation implements Runnable {
         this.positions = positions;
         this.directions = directions;
         this.simulationMap = simulationMap;
-        for(Vector2d position : this.positions){
-            Animal animal = new Animal(position);
-            try{
-                simulationMap.place(animal);
-                animals.add(animal);
-            }catch (PositionAlreadyOccupiedException e){
-                e.printStackTrace();
-            }
-        }
+
     }
     /* dobrze animals.removeIf(animal -> !simulationMap.place(animal));*/
 
@@ -45,11 +37,28 @@ while (iterator.hasNext()) {
     public void run(){
         int counter = 0;
         int modVal = 0;
+        for(Vector2d position : positions){
+            Animal animal = new Animal(position);
+            try{
+                simulationMap.place(animal);
+                Thread.sleep(750);
+                animals.add(animal);
+            }catch (PositionAlreadyOccupiedException e){
+                e.printStackTrace();
+            } catch (InterruptedException e) {
+                System.out.println("problemu z oczekiwaniem!");
+            }
+        }
         int animalsSize = animals.size();
 //        System.out.println(simulationMap);
         for(MoveDirection direct : directions){
             modVal = counter % animalsSize;
             simulationMap.move(animals.get(modVal),direct);
+            try {
+                Thread.sleep(750);
+            } catch (InterruptedException e) {
+                System.out.println("problem z oczekiwaniem!");
+            }
 //            System.out.println(simulationMap);
             counter++;
         }

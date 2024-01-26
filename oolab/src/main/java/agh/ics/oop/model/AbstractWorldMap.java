@@ -14,7 +14,7 @@ abstract public class AbstractWorldMap implements WorldMap {
     public void place(Animal animal) throws PositionAlreadyOccupiedException {
         if (canMoveTo(animal.getPosition())){
             animals.put(animal.getPosition(),animal);
-            mapChanged("Zwierzę zostało postawione na" + animal.getPosition());
+            mapChanged("Zwierze zostalo postawione na" + animal.getPosition());
         }
         else{
             throw new PositionAlreadyOccupiedException(animal.getPosition());
@@ -27,7 +27,7 @@ abstract public class AbstractWorldMap implements WorldMap {
             animals.remove(animal.getPosition());
             animal.move(direction,this);
             animals.put(animal.getPosition(),animal);
-            mapChanged("Zwierzę poruszyło się na " + animal.getPosition());
+            mapChanged("Zwierze poruszylo sie na " + animal.getPosition());
         }
     }
     @Override
