@@ -1,3 +1,4 @@
+
 package agh.ics.oop.model;
 
 import org.jetbrains.annotations.NotNull;
